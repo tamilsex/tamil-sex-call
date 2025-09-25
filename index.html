@@ -101,19 +101,24 @@
     }
   }
 
-  @media (max-width: 480px) {
-    header {
-      font-size: 1.2em;
+</style>
+
+  @media (max-width: 768px) {
+    #districtView {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      margin-bottom: 10px;
+      background: white;
+      padding-top: 10px;
     }
-    .card {
-      padding: 12px;
-      font-size: 0.9em;
-    }
-    .num-btn {
-      padding: 8px;
-      font-size: 0.85em;
+
+    #buttonsGrid {
+      max-height: 60vh;
+      overflow-y: auto;
     }
   }
+</style>
 </style>
 </head>
 
@@ -633,6 +638,11 @@
         b.style.flex = '1';
         b.addEventListener('click', () => {
           window.open('https://rzp.io/rzp/R3864lh', '_blank');
+
+          // Smooth scroll to the clicked button on mobile
+          if (window.innerWidth <= 768) {
+            b.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
         });
 
         btnWrapper.appendChild(b);
