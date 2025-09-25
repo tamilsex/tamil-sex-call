@@ -27,7 +27,6 @@
     margin: 0 auto;
   }
 
-  /* Responsive Grid */
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -99,11 +98,8 @@
     .buttons-grid {
       grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     }
-  }
 
-</style>
-
-  @media (max-width: 768px) {
+    /* Sticky district header */
     #districtView {
       position: sticky;
       top: 0;
@@ -118,7 +114,6 @@
       overflow-y: auto;
     }
   }
-</style>
 </style>
 </head>
 
@@ -650,7 +645,10 @@
       });
 
       document.getElementById('districtTitle').textContent = name;
-      document.getElementById('districtView').style.display = 'block';
+      const districtView = document.getElementById('districtView');
+      districtView.style.display = 'block';
+      // Scroll districtView to top of screen for immediate view
+      districtView.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     renderGrid();
